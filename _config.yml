@@ -1,0 +1,8 @@
+name: W8NOISE
+url: http://www.w8noise.com
+author: Tolga Sezer
+markdown: redcarpet
+highlighter: pygments
+paginate: 5
+permalink: /blog/:year/:month/:day/:title.html
+excerpt_separator: <!-- more -->
