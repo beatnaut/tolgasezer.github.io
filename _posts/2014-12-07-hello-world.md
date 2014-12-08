@@ -63,20 +63,30 @@ Each of the asset management companies has 5 styles of
 picking within the fund strategy, each representing one fund offered
 to investors. These "picking styles" are:
 
-- Random
-- AUM-Weighted
-- Maximum AUM
-- Good Pick
-- Bad Pick
+- Random (rand)
+- AUM-Weighted (aumW)
+- Maximum AUM (aumM)
+- Good Pick (goodP)
+- Bad Pick (badP)
+
+The resulting return stream for each picking style is:
+
+$$r\_{rand\_{k, y, i}} = r\_{i, m} \textit{,} \textit{where} \ m
+\sim U[(1, M)]$$
+
+$$r\_{aumW\_{k, y, i}} = (r\_{i,m} \times aum\_{i,m})\frac{1}{M}$$
+
+$$r\_{aumM\_{k, y, i}} = r\_{i,m}  | m $$ 
+
 
 When it comes to allocating among the two fund strategies, the 5 asset
 management companies have different allocation styles:
 
-- Mean-Variance Optimizer
-- Minimum Variance Optimizer
-- Return Optimizer
+- Maximum Mean-Variance
+- Minimum Variance
+- Maximum Return
 - Volatility-Weighted
-- Utility-Function Optimizer
+- Utility-Function Optimisation
 
 Given 1000 investors, each asset management company has initially 200
 investors who are evenly distributed among the 5 picking
@@ -84,6 +94,11 @@ styles. That means we have 25 investment products offered each having
 40 investors subscribed. Among the 25 products, only 5 products
 consider the utility-function of the investor when deciding on the
 allocation.
+
+
+
+
+
 
 ### Data & Rules
 We have monthly historical hedge-fund data starting from 1998 of which
