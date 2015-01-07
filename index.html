@@ -3,32 +3,29 @@ layout: default
 title: Homepage
 ---
 
-<header class="page-header">
-  <h1>Blog Posts</h1>
-</header>
-
-<ul class="list-unstyled">
+<div id="home">
   {% for post in paginator.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a> <span class="label">({{ post.date | date_to_long_string }})</span>
+  <h1>{{ post.title }}</h1>
+  <p><span class="date">{{ post.date | date_to_long_string }}</span></p>
+  <div class="content">
     {% if post.content contains site.excerpt_separator %}
-    <p>{{ post.excerpt }}</p>
+    {{ post.excerpt }}
+    <p><a class="btn btn-default" href="{{ post.url }}">Continue reading</a></p>
     {% else %}
     {{ post.content }}
     {% endif %}
-  </li>
+  </div>
+  <hr />
   {% endfor %}
-</ul>
+</div>
 
 {% if paginator.total_pages > 1 %}
-<div class="text-center">
-  <ul class="pagination">
-    <li class="{% if paginator.previous_page %}previous{% else %}previous disabled{% endif %}">
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    <li class="{% if paginator.next_page %}next{% else %}next disabled{% endif %}">
-      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-  </ul>
-</div>
+<ul class="pager">
+  <li class="{% if paginator.previous_page %}previous{% else %}previous disabled{% endif %}">
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+  </li>
+  <li class="{% if paginator.next_page %}next{% else %}next disabled{% endif %}">
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+  </li>
+</ul>
 {% endif %}

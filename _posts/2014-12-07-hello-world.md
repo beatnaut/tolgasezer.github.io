@@ -40,12 +40,12 @@ the period, investors do not update their utility function.
 
 Let's also assume that investors have a primitive behavioural
 rule. They choose a asset management company randomly and exit when
-their maximum drawdown is hit. They re-enter at random the next time
+their maximum drawdown is hit. They re-enter at random at the next time
 tick. Everytime the investor enters, he informs the asset managment
 company of his individual utility function.
 
 In this artificial world, we further assume a minimum level of consiousness,
-i.e. "ZIP", and do not consider "Memory", "Conscioussness", "Reasoning".
+i.e. "ZIP", and do not consider attributes such as "{Memory", "Conscioussness", "Reasoning".
 
 ### Heterogenous Asset Managers
 
@@ -56,54 +56,41 @@ market. The 1000 funds belong to one of the two fund strategies:
 - Global Macro
 - Long/Short Equity
 
-They pick fund(s) within the fund strategies and then allocate the
-investment among the two strategies. 
+They pick one fund or a composition of funds within each fund
+strategy category and then allocate between the funds they have
+picked.
 
 Each of the asset management companies has 5 styles of
-picking within the fund strategy, each representing one fund offered
-to investors. These "picking styles" are:
+picking from within the fund strategy category. These "picking styles" are:
 
-- Random (rand)
-- AUM-Weighted (aumW)
-- Maximum AUM (aumM)
-- Good Pick (goodP)
-- Bad Pick (badP)
+- Dice (uniform random)
+- Diversified (weighted by asset under management)
+- Popular (maximum asset under management)
+- Skilled (hit probability > 0.50)
+- Lousy (hit probability < 0.50)
 
-The resulting return stream for each picking style is:
+When it comes to allocating between the two fund strategies, the 5 asset
+management companies differentiate themselves through their allocation styles:
 
-$$r\_{rand\_{k, y, i}} = r\_{i, m} \textit{,} \textit{where} \ m
-\sim U[(1, M)]$$
+- GoSharpe (mean-variance optimisation)
+- Timid (minimum variance optimisation)
+- Rambo (maximum return)
+- Balanced (inverse volatility weighted)
+- Thumbprint (investor-centric utility-function optimisation)
 
-$$r\_{aumW\_{k, y, i}} = (r\_{i,m} \times aum\_{i,m})\frac{1}{M}$$
-
-$$r\_{aumM\_{k, y, i}} = r\_{i,m}  | m $$ 
-
-
-When it comes to allocating among the two fund strategies, the 5 asset
-management companies have different allocation styles:
-
-- Maximum Mean-Variance
-- Minimum Variance
-- Maximum Return
-- Volatility-Weighted
-- Utility-Function Optimisation
-
-Given 1000 investors, each asset management company has initially 200
+Since there are 1000 investors, each asset management company has initially 200
 investors who are evenly distributed among the 5 picking
 styles. That means we have 25 investment products offered each having
 40 investors subscribed. Among the 25 products, only 5 products
 consider the utility-function of the investor when deciding on the
 allocation.
 
-
-
-
-
-
 ### Data & Rules
-We have monthly historical hedge-fund data starting from 1998 of which
+We have monthly historical hedgefund data starting from 1998 of which
 we consider two relatively uncorrelated investment strategy
 categories namely "Long-Short Equity" and "Global Macro".
+
+
 
 <br>
 
@@ -132,6 +119,7 @@ VolWeighted, uFunction}</td></tr>
 
 <br>
 
+### Graph 1: Investor Migration
 <p align="center">
   <img />
 <img src="/assets/posts/graphs/plot1.png" width="70%">
@@ -139,8 +127,19 @@ VolWeighted, uFunction}</td></tr>
 
 <br>
 
+Graph 1 shows the migration pattern of investors over time. It is apparent
+that the "Lousy" picking style looses almost all of his investors
+regardless of the allocation style. Interestingly, we experience on
+market regime during which there is a major migration across the
+investment products. 
+
+<br>
+
+### Table 1: Investor Emigration
 <table class = "table table-stripeed table-hover"><tbody><tr><th></th><th>AUM WEIGHTED </th><th>BAD PICK </th><th>GOOD PICK </th><th>MAX AUM </th><th>RANDOM</th></tr><tr><td>MEAN VAR </td><td>           1 </td><td>      41 </td><td>       17 </td><td>      1 </td><td>    11</td></tr><tr><td>MIN VAR  </td><td>           1 </td><td>      40 </td><td>       16 </td><td>      1 </td><td>     5</td></tr><tr><td>RETURN        </td><td>           0 </td><td>      42 </td><td>       20 </td><td>      4 </td><td>    19</td></tr><tr><td>UF            </td><td>           7 </td><td>      41 </td><td>       13 </td><td>      4 </td><td>    18</td></tr><tr><td>VOLATILITY    </td><td>           3 </td><td>      41 </td><td>       16 </td><td>      1 </td><td>    23</td></tr></tbody></table>
 
+
+### Table 2: Fatal Period (highest number of redemptions in a single period)
 <table class = "table table-stripeed table-hover"><tbody><tr><th></th><th>AUM WEIGHTED </th><th>BAD PICK </th><th>GOOD PICK </th><th>MAX AUM </th><th>RANDOM</th></tr><tr><td>MEAN VAR </td><td>          -1 </td><td>     -22 </td><td>       -6 </td><td>     -1 </td><td>    -9</td></tr><tr><td>MIN VAR  </td><td>          -1 </td><td>     -19 </td><td>       -8 </td><td>     -1 </td><td>    -5</td></tr><tr><td>RETURN        </td><td>           0 </td><td>      -8 </td><td>       -9 </td><td>     -4 </td><td>   -14</td></tr><tr><td>UF            </td><td>          -6 </td><td>     -11 </td><td>       -6 </td><td>     -3 </td><td>   -10</td></tr><tr><td>VOLATILITY    </td><td>          -1 </td><td>     -12 </td><td>       -8 </td><td>     -1 </td><td>   -11</td></tr></tbody></table>
 
 
