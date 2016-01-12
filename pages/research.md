@@ -12,6 +12,20 @@ Here is a quick summary of my published and ongoing research
 - Investor Heterogeneity & Investment Decision
 - Credit Derivatives in an ABM-based Economy
 
+#### Currency Carry Trading
+
+#### Efficient Optimisation Routines
+
+#### Principal Component Analysis
+
+#### Agricultural Commodity Trading on CBOT
+
+#### Forecasting Soybean & Corn Yield in the United States
+
+
+
+
+
 ## Published
 
 #### Trading
